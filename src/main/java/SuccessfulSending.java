@@ -17,6 +17,6 @@ public class SuccessfulSending {
 
     @Description("Проверка успешной отправки сообщения")
     public void checkForSuccessFulSending() {
-        text.shouldBe(visible, Duration.ofSeconds(10L)).shouldBe(new Condition[]{Condition.text("Спасибо! Данные успешно отправлены.")});
+        text.shouldBe(visible, Duration.ofSeconds(10L)).shouldHave(Condition.exactText("Спасибо! Данные успешно отправлены."));
     }
 }
