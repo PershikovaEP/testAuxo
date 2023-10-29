@@ -10,7 +10,7 @@ public class HomePage {
 
     @Description("Кликаем на кнопку свзяаться с нами - открывается страница Связаться с Нами")
     public ConnectWithUs clickingOnTheContactButton() {
-        this.button.click();
+        button.click();
         return new ConnectWithUs();
     }
 }

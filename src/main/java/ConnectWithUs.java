@@ -3,6 +3,8 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import jdk.jfr.Description;
 
+import static com.codeborne.selenide.Condition.visible;
+
 
 public class ConnectWithUs {
     private SelenideElement name = Selenide.$x("//*[@id='input_1495810359387']");
@@ -14,48 +16,49 @@ public class ConnectWithUs {
     private SelenideElement question = Selenide.$x("//*[@id='input_1653564485974']");
     private SelenideElement button = Selenide.$(".t-form__submit button");
 
+    //В конструкторе проверяем, что страница открылась
     public ConnectWithUs() {
-        this.name.shouldBe(new Condition[]{Condition.visible});
+        lastName.shouldBe(visible);
     }
 
     @Description("Вводим имя в поле Имя")
     public void fillName(String text) {
-        this.name.setValue(text);
+        name.setValue(text);
     }
 
     @Description("Вводим фамилию в поле Фамилия")
     public void fillLastName(String text) {
-        this.lastName.setValue(text);
+        lastName.setValue(text);
     }
 
     @Description("Вводим email в поле email")
     public void fillEmail(String text) {
-        this.email.setValue(text);
+        email.setValue(text);
     }
 
     @Description("Вводим телефон в поле Телефон")
     public void fillPhone(String text) {
-        this.phone.setValue(text);
+        phone.setValue(text);
     }
 
     @Description("Вводим компанию в поле Компания")
     public void fillCompany(String text) {
-        this.company.setValue(text);
+        company.setValue(text);
     }
 
     @Description("Вводим должность в поле Должность")
     public void fillJob(String text) {
-        this.job.sendKeys(new CharSequence[]{text});
+        job.sendKeys(new CharSequence[]{text});
     }
 
     @Description("Вводим вопрос в поле Вопрос")
     public void fillQuestion(String text) {
-        this.question.sendKeys(new CharSequence[]{text});
+        question.sendKeys(new CharSequence[]{text});
     }
 
     @Description("Нажимаем на кнопку Отправить - открывается страницы Успешной отправки сообщения")
     public SuccessfulSending pressButton() {
-        this.button.click();
+        button.click();
         return new SuccessfulSending();
     }
 }

@@ -2,12 +2,7 @@ import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Selenide.open;
 
-
 public class AuxoTest {
-
-    HomePage homePage = new HomePage();
-    ConnectWithUs connectWithUs = new ConnectWithUs();
-    SuccessfulSending successfulSending = new SuccessfulSending();
 
     @BeforeEach
     void setup() {
@@ -16,7 +11,8 @@ public class AuxoTest {
 
     @Test
     void shouldSendMessage() {
-        homePage.clickingOnTheContactButton();
+        HomePage homePage = new HomePage();
+        var connectWithUs = homePage.clickingOnTheContactButton();
         connectWithUs.fillName("test");
         connectWithUs.fillLastName("test");
         connectWithUs.fillPhone("89001112233");
@@ -24,7 +20,8 @@ public class AuxoTest {
         connectWithUs.fillCompany("test");
         connectWithUs.fillJob("test");
         connectWithUs.fillQuestion("test");
-        connectWithUs.pressButton();
+        var successfulSending = connectWithUs.pressButton();
         successfulSending.checkForSuccessFulSending();
     }
+
 }
