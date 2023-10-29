@@ -57,7 +57,7 @@ public class AuxoTest {
 
         $x("//*[@id='form521025490']/div[@class='js-successbox t-form__successbox t-text t-text_md']")
                 .shouldBe(Condition.visible, Duration.ofSeconds(10))
-                .shouldBe(Condition.text("Спасибо! Данные успешно отправлены."));
+                .shouldBe(Condition.exactText("Спасибо! Данные успешно отправлены."));
 
     }
 }
