@@ -41,7 +41,7 @@ public class AuxoTest {
         $x("//*[@id='input_1495810354468']").doubleClick().clear();
         $x("//*[@id='input_1495810354468']").setValue("test@mail.ru");
 
-        //Внесение в поле инпут значения после двойного клики, очистки ctrl + a и delete с помощью setValue
+        //Внесение в поле инпут значения после двойного клика, очистки ctrl + a и delete с помощью setValue
         $x("//*[@id='input_1669804191159']").doubleClick().sendKeys(Keys.CONTROL + "a", Keys.DELETE);
         $x("//*[@id='input_1669804191159']").setValue("+79202020000");
 
