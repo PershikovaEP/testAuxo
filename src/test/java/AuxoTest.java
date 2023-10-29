@@ -3,6 +3,11 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 
 public class AuxoTest {
@@ -24,6 +29,7 @@ public class AuxoTest {
         driver.get("https://auxo-it.ru/");
     }
 
+
     @AfterEach
     void tearDown() {
         driver.quit();
@@ -31,9 +37,10 @@ public class AuxoTest {
     }
 
     @Test
-    void shouldSendMessage() {
+    void shouldSendMessage() throws InterruptedException {
         driver.findElement(By.cssSelector(".t228__right_buttons_but a")).click();
 
+        //3 элемента этой формы! Ни одно поле не заполнилось и кнопка отправить не нажимается
         //Через скрипт попробовала заполнить поле инпут
         WebElement name = driver.findElement(By.xpath("//*[@id='input_1495810359387']"));
         JavascriptExecutor js = (JavascriptExecutor)driver;
@@ -62,12 +69,15 @@ public class AuxoTest {
 
         driver.findElement(By.xpath("//*[@id='input_1653564485974']")).sendKeys("Тест?");
 
-//        //scrollIntoView(false);
-        driver.findElement(By.cssSelector(".t-form__submit button")).click();
+        //Не находит элемент, ставлю задержку через java или через средства selenium - не проходит, таких 3 элемента, они перекрывают друг друга
+        //Thread.sleep(10000);
+        //driver.findElement(By.cssSelector(".t-form__submit button")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10000));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".t-form__submit button"))).click();
+        //wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".t-form__submit button"))).Click();
 
         String actual = driver.findElement(By.xpath("//*[@id='form521025490']/div[@class='js-successbox t-form__successbox t-text t-text_md']")).getText();
         Assertions.assertEquals("Спасибо! Данные успешно отправлены.", actual);
-
 
     }
 }
