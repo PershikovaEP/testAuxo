@@ -21,7 +21,7 @@ public class AuxoTest {
 
     @Test
 
-    void shouldSendMessage() throws InterruptedException {
+    void shouldSendMessage()  {
         $(".t228__right_buttons_but a").click();
 
         //В связи с тройным повтором элементов формы Обратной связи беру абсолютный путь
@@ -36,7 +36,7 @@ public class AuxoTest {
         //селектор не доступен из-за перекрытия другими элементами
         //Thread.sleep(10000); //задержка и скрол не помогли
         //$("/html/body/div/div[17]/div/div/div[2]/div/form/div[2]/div[10]/button").scrollIntoView(true);
-        $("/html/body/div/div[17]/div/div/div[2]/div/form/div[2]/div[10]/button").click();
+        $("/html/body/div/div[8]/div/div/div[2]/div/form/div[2]/div[10]/button").click();
 
         $x("//*[@id='form521025490']/div[@class='js-successbox t-form__successbox t-text t-text_md']")
                 .shouldBe(Condition.visible, Duration.ofSeconds(10))
